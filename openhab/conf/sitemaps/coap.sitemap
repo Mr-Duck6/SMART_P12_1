@@ -1,0 +1,21 @@
+sitemap coap label="CoAP → HTTP Gateway" {
+    Frame label="Gateway" {
+        Text label="Gateway status" item=Gateway_Health
+        Text label="Last gateway error" item=Gateway_Last_Error
+    }
+    Frame label="CoAP device 01" {
+        Text item=Thermo01_Temperature
+        Text item=Thermo01_Humidity
+        Text item=Thermo01_Online
+    }
+    Frame label="CoAP device 02" {
+        Text item=Thermo02_Temperature
+        Text item=Thermo02_Humidity
+        Text item=Thermo02_Online
+    }
+    Frame label="Outdoor CoAP device" {
+        Text item=Weather_Temperature
+        Text item=Weather_Humidity
+        Text item=Weather_Online
+    }
+}

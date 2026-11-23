@@ -1,0 +1,20 @@
+
+rule "Log CoAP gateway Thing status"
+when
+    Thing "http:url:coapGateway" changed
+then
+    logInfo("coap.gateway", "Gateway Thing status changed: {}", getThingStatusInfo("http:url:coapGateway"))
+end
+
+rule "Temperature range warning"
+when
+    Item Thermo01_Temperature changed or
+    Item Thermo02_Temperature changed
+then
+    if (Thermo01_Temperature.state instanceof Number && (Thermo01_Temperature.state as Number) > 30) {
+        logWarn("coap.gateway", "Sensor 01 high temperature: {}", Thermo01_Temperature.state)
+    }
+    if (Thermo02_Temperature.state instanceof Number && (Thermo02_Temperature.state as Number) > 30) {
+        logWarn("coap.gateway", "Sensor 02 high temperature: {}", Thermo02_Temperature.state)
+    }
+end

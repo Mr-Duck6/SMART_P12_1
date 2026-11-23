@@ -1,0 +1,16 @@
+Group gCoap "CoAP devices"
+
+Number:Temperature Thermo01_Temperature "Sensor 01 temperature [%.1f °C]" <temperature> (gCoap) { channel="http:url:coapGateway:thermo01Temperature" }
+Number Thermo01_Humidity "Sensor 01 humidity [%.1f %%]" (gCoap) { channel="http:url:coapGateway:thermo01Humidity" }
+String Thermo01_Online "Sensor 01 online [%s]" (gCoap) { channel="http:url:coapGateway:thermo01Status" }
+
+Number:Temperature Thermo02_Temperature "Sensor 02 temperature [%.1f °C]" <temperature> (gCoap) { channel="http:url:coapGateway:thermo02Temperature" }
+Number Thermo02_Humidity "Sensor 02 humidity [%.1f %%]" (gCoap) { channel="http:url:coapGateway:thermo02Humidity" }
+String Thermo02_Online "Sensor 02 online [%s]" (gCoap) { channel="http:url:coapGateway:thermo02Status" }
+
+Number:Temperature Weather_Temperature "Outdoor temperature [%.1f °C]" <temperature> (gCoap) { channel="http:url:coapGateway:weatherTemperature" }
+Number Weather_Humidity "Outdoor humidity [%.1f %%]" (gCoap) { channel="http:url:coapGateway:weatherHumidity" }
+String Weather_Online "Outdoor sensor online [%s]" (gCoap) { channel="http:url:coapGateway:weatherStatus" }
+
+String Gateway_Health "Gateway health [%s]"
+String Gateway_Last_Error "Last gateway error [%s]"

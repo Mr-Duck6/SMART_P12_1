@@ -1,0 +1,2 @@
+aiocoap==0.4.12
+aiohttp==3.11.18

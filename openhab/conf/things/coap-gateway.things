@@ -1,0 +1,44 @@
+Thing http:url:coapGateway "CoAP HTTP Gateway" [
+    baseURL="http://coap-gateway:8081",
+    refresh=5,
+    timeout=5000,
+    strictErrorHandling=true
+] {
+    Channels:
+        Type number : thermo01Temperature "Sensor 01 Temperature" [
+            stateExtension="/api/devices/thermo-01/resources/temperature",
+            stateTransformation="JSONPATH:$.data.value"
+        ]
+        Type number : thermo01Humidity "Sensor 01 Humidity" [
+            stateExtension="/api/devices/thermo-01/resources/humidity",
+            stateTransformation="JSONPATH:$.data.value"
+        ]
+        Type string : thermo01Status "Sensor 01 Status" [
+            stateExtension="/api/devices/thermo-01/resources/status",
+            stateTransformation="JSONPATH:$.data.online"
+        ]
+        Type number : thermo02Temperature "Sensor 02 Temperature" [
+            stateExtension="/api/devices/thermo-02/resources/temperature",
+            stateTransformation="JSONPATH:$.data.value"
+        ]
+        Type number : thermo02Humidity "Sensor 02 Humidity" [
+            stateExtension="/api/devices/thermo-02/resources/humidity",
+            stateTransformation="JSONPATH:$.data.value"
+        ]
+        Type string : thermo02Status "Sensor 02 Status" [
+            stateExtension="/api/devices/thermo-02/resources/status",
+            stateTransformation="JSONPATH:$.data.online"
+        ]
+        Type number : weatherTemperature "Outdoor Temperature" [
+            stateExtension="/api/devices/weather-01/resources/temperature",
+            stateTransformation="JSONPATH:$.data.value"
+        ]
+        Type number : weatherHumidity "Outdoor Humidity" [
+            stateExtension="/api/devices/weather-01/resources/humidity",
+            stateTransformation="JSONPATH:$.data.value"
+        ]
+        Type string : weatherStatus "Outdoor Sensor Status" [
+            stateExtension="/api/devices/weather-01/resources/status",
+            stateTransformation="JSONPATH:$.data.online"
+        ]
+}

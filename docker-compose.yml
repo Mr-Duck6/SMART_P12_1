@@ -1,0 +1,43 @@
+services:
+  coap-gateway:
+    build: ./gateway
+    container_name: coap-http-gateway
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+      - "5683:5683/udp"
+    environment:
+      COAP_HOST: 0.0.0.0
+      COAP_PORT: "5683"
+      HTTP_HOST: 0.0.0.0
+      HTTP_PORT: "8081"
+      LOG_LEVEL: INFO
+    networks: [iot]
+
+  openhab:
+    image: openhab/openhab:4.3.6
+    container_name: coap-openhab
+    restart: unless-stopped
+    depends_on:
+      - coap-gateway
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      USER_ID: "9001"
+      GROUP_ID: "9001"
+      OPENHAB_HTTP_PORT: "8080"
+      OPENHAB_HTTPS_PORT: "8443"
+      EXTRA_JAVA_OPTS: "-Duser.timezone=Europe/Kyiv"
+    volumes:
+      - ./openhab/conf:/openhab/conf
+      - openhab_userdata:/openhab/userdata
+      - openhab_addons:/openhab/addons
+    networks: [iot]
+
+networks:
+  iot:
+
+volumes:
+  openhab_userdata:
+  openhab_addons:
